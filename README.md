@@ -1,9 +1,13 @@
 #  오늘 배운것
 ## 250716
 ```
-touch  -- 파일 생성
+touch  -- 파일 생성'
+ls -- 현재 폴더내의 파일들 목록 출력
+rm (파일이름.확장자명) -- 파일 삭제 // 폴더 삭제시 rm -r (폴더이름)
+pwd -- 현재 폴더의 절대경로
 mkdir -- 폴더 생성
 cd  .(현재폴더) / ..(상위폴더)  -- 폴더 이동
+code .  -- vscode 파일을 현재 폴더기준으로 다시 열기
 
 # git 사용하는방법 
 git init (저장소 지정)
@@ -26,5 +30,7 @@ git remote -v -- github 저장소 목록 (원격저장소)
 git log --oneline   
 git revert (commit ID) -- 특정 commit을 삭제 할떄 사용 ex) commit 1, 2, 3이 있을떄 commit 2 삭제하고싶을떄
 git reset --soft/mixed/hard``` (commit ID) -- 게임 롤백이랑 비슷 - commit 을 돌리고 싶을떄
-git reflog - hard로 commit 삭제했을때 log 확인하여 commit ID 확인
+git reflog --   hard로 commit 삭제했을때 log 확인하여 commit ID 확인
+
+git restore -- 
 ```
