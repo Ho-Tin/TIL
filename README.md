@@ -1,11 +1,11 @@
 #  오늘 배운것
-* 250716
+## 250716
 ```
 touch  -- 파일 생성
 mkdir -- 폴더 생성
 cd  .(현재폴더) / ..(상위폴더)  -- 폴더 이동
 
-git 사용하는방법 
+# git 사용하는방법 
 git init (저장소 지정)
 git st 
 git add 파일이름 or .(현재폴더에 있는 모든 파일 add)
@@ -14,7 +14,7 @@ git log -- log 이력 확인 / git log --oneline > log 간소화
 TIP : git config --global alias.st status -- git status 치는게 힘드니 단축키? 지정 git st
 ```
 
-* 250717
+## 250717
 ```
 git remote add origin(이름) https://(주소) -- github와 연걸
 git push origin(이름) master  -- github에 파일 전송
