@@ -15,9 +15,10 @@ git st
 git add 파일이름 or .(현재폴더에 있는 모든 파일 add)
 git commit -m "commit(저장)"
 git log -- log 이력 확인 / git log --oneline > log 간소화 
+git commit --amend  --  commit 수정할떄 사용
 TIP : git config --global alias.st status -- git status 치는게 힘드니 단축키? 지정 git st
 ```
-
+---
 ## 250717
 ```
 git remote add origin(이름) https://(주소) -- github와 연걸
