@@ -47,3 +47,4 @@ git restore --
 - open AI API  필수 파라미터 : model , messages
 ### Open AI API 사용하여 chat bot 만들기
 - vscode를 이용한 바이브 코딩
+- https://github.com/Ho-Tin/SSAFY-Chat-bot 
