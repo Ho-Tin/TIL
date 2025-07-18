@@ -35,3 +35,15 @@ git reflog --   hard로 commit 삭제했을때 log 확인하여 commit ID 확인
 
 git restore -- 
 ```
+---
+## 250718
+
+- AI 관련 GPT 내용
+- Generative / Pre-trained / Transformer
+- Attention 매커니즘
+- Interface
+- **cs 지식 공부(computer science)**
+- API 
+- open AI API  필수 파라미터 : model , messages
+### Open AI API 사용하여 chat bot 만들기
+- vscode를 이용한 바이브 코딩
