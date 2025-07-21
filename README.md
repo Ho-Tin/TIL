@@ -48,3 +48,14 @@ git restore --
 ### Open AI API 사용하여 chat bot 만들기
 - vscode를 이용한 바이브 코딩
 - https://github.com/Ho-Tin/SSAFY-Chat-bot 
+
+## 250721
+- AI 캠프 시작
+- 우편함 레터링 서비스 
+- 스터디 공부 방법
+- CS, 알고리즘 
+**CS공부의 경우 면접에서 발표할수 있을정도로 공부**
+- 백준같은 알고리즘 문제를 풀고 한번에 그치지 않고 반복해서 학습(다른사람의 코딩 보는것도 도움됨)
+- CS책 : 혼자 공부하는 시리즈 https://www.yes24.com/product/goods/111378840
+- 프로그래머스 사용 추천(코딩시-코딩테스트 준비)
+- 
