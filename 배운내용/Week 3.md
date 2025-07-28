@@ -132,3 +132,4 @@ print(('b' and 'a') in vowels) # True
 - or 는 False가 나와도 계속 진행
 - **멤버쉽 연산자**
 - in , not in
+0 or 3 or b
