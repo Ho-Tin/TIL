@@ -83,4 +83,52 @@
 - key - Value 
 - key는 변경 불가능한 자료형만 사용 가능(str,int,float, tuple,range 등등)
 - value는 모든 자료형 사용 가능
-
+- defaultdict(list) << list 에 default로 빈값 지정
+- **set**
+- 순서와 중복이 없는 변경 가능한 자료형
+- 수학에서 **집합**과 동일한 연산
+- {}로 표시
+```
+list = [1,2,3,4,1,1,1,1]
+print(list) # 1,2,3,4,1,1,1,1
+list = set(list)
+print(list) #  1,2,3,4
+```
+- 합집합 |  myset1 | myset2
+- 교집합 &  myset1 & myset2
+- 차집합 -
+- **None**
+- 값이 없음을 의도적으로 표현
+- **Bool**
+- 참(True) 과 거짓(False)를 표현하는 자료형
+- 0은 False / 0제외 숫자는 다 True
+- **Conversion**
+- **암시적 형변환** - 파이썬이 자동으로 형변환 하는 것
+- 정수와 실수에서 정수가 실수로 바뀜
+- 3 + 5.0 = 8.0 
+- True + 3 = 4
+### 명시적 형변환 - 직접 지정하는 형번환
+- str -> int : 형식에 맞는 숫자마 가능
+- "3.5" int("3.5")는 불가능 -> float("3.5") 정수는 실수가 될수없음
+- ***연산자***
+- **복합 연산자**
+- 1+=2 , -=, *=, /+, //=, 등
+- 비교 연산자
+- == , !=, is, is not
+- is 메모리 내에서 같은 객체를 참조하는지 확인 (주소값이 같은지 확인)
+- 'str'은 주소값이 바뀌지 않지만 list는 주소값이 바뀜
+- **논리 연산자**
+- and or not
+### 단축평가
+- (True and True) ('a' and 'b') 이면 'b' 반환
+```
+vowels = 'aeiou'
+print(('a' and 'b') in vowels) # False
+print(('b' and 'a') in vowels) # True
+```
+- **and 는 False(거짓)이 나오면 중단**
+- and 는 True가 나와도 계속 진행
+- **or 는 True(참)이 나오면 중단** 
+- or 는 False가 나와도 계속 진행
+- **멤버쉽 연산자**
+- in , not in
