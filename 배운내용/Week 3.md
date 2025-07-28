@@ -63,3 +63,24 @@
 - python 튜터  render all 모시꺵이 작성
  https://pythontutor.com/python-compiler.html#mode=edit
 
+## 250728 - 오후
+- list, dict ,set  
+- **list** 
+- 순서대로 변경 가능한 시퀀스 자료
+- 어떤 자료형도 저장할 수 있음
+- list는 가변이다 < 변경할수있다>
+- [] 사용
+- **tuple**
+- list와 비슷하지만 변경 불가능
+- () 사용--없어도 됨
+- , ex   a = (1, )
+-  **range**
+- range(0,10) 0이상 10 미만 / 0부터 9까지
+### non_시퀀스
+- **dict**
+- 중복도 없고 순서도 없는 변경 가능한 자료형
+- EX 노래방 번호 
+- key - Value 
+- key는 변경 불가능한 자료형만 사용 가능(str,int,float, tuple,range 등등)
+- value는 모든 자료형 사용 가능
+
