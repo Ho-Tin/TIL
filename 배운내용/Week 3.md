@@ -190,4 +190,30 @@ else:
 - 순서에 상관없이 적용가능
 - 호출 시 키워드 인자는 위치 인자 뒤에 위치해야함 (아니면 오류뜸)
 - **임의의 인자 목록**
-- 
+- def adb(*args) <<
+- 정해지지 않은 개수의 인자를 처리하는 인자
+- list형식이 아닌 tuple 형태로 줌
+- 매개변수 앞에 ' * '를 붙여 사용
+- **임의의 키워드 인자 목록**
+- def adb(**kwargs) 
+- 매개변수 앞에 ' ** ' 를 붙여 사용
+### python의 범위(soope)
+- local scope에 존재하기 떄문에 global scope에서는 사용할수 없음
+- local에 지정한 변수는 global에서 사용 불가
+
+- built-in scope
+- 파이썬이 실행된 이후부터 영원히 유지되는 것
+- scope의 순서 **LEGB Rule**
+
+### **lisat comprehension** (리스트 한줄로 쓰기)
+- 나중에 공부 다하고 코드 줄이기 하고싶을떄 사용
+- 속도가 빠르다는 장점이 있음
+
+### enumerate(iterable, start=0)
+- enumerate 인덱스와 value값을 동시에 가져올때 사용
+```
+fruits = ['apple', 'banana', 'cherry']
+
+for ind, va in enumerate(fruits, start=3):
+    print(ind, va)
+```
