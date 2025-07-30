@@ -282,4 +282,35 @@ for ind, va in enumerate(fruits, start=3):
 impot math
 ```
 - 모듈을 가져오는 방법 : import , from
-- 
+- 모듈 주의사항
+    - 서로 다른 모듈이 같은 이름의 함수를 제공할 경우 문제 발생
+    - 마지막의 import된 이름으로 대체딤
+- as 키워드를 사용하여 별칭을 부여 가능
+- math 처럼 기본 내장 module이 있음
+- 모듈을 직접 만들수도 있다
+- 같은 폴더가 아니라도 사용가능
+- 외부 패키지 pip
+```
+ import requests
+ url = 'https:'
+ response = requests.get(url).json()
+
+ print(response)
+```
+- 주의사항
+    - 버전 충돌
+    - 라이선스 확인
+    - 보안
+- 람다 표현신(lambda)
+- 익명 함수를 만드는 데 사용되는 표현식 -> 한 줄로 간단하게 
+- 한번쓰고 말때 사용
+- 함수를 정의
+- lambda 매개변수: 표현식\
+
+```
+# 내부함수 보는법
+
+import math
+print(help(math))
+```
+
