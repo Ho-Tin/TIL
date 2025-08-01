@@ -547,7 +547,32 @@ print('hello'.capitalize()) - 첫글자만 대문자로 바꿔주는 메서드 �
 
 
     - 
-- git add -p
-    - add . 과 다르게 내가 올리고 싶은 data를 한번더 확인하고 올릴수 있음
+- git add -p (꿀팁)
+    - add . 과 다르게 내가 올리고 싶은 data를 한번더 확인하고 올릴수 있음(검수)
+    - 올리고 싶은 코드를 commit 관리하기 용이함
+- git stash
+    - 내가 작업중인 코드 창고로 저장(git add 로 commit 관리하기 싫을때 사용)
+    - git stash pop (창고에 있는거 빼오기)
     
 - pathlib  
+    - **파일 시스템 경로를** 객체 지향적으로 다룰 수 있게 해주는 라이브러리
+    - 파일 생성, 읽기, 쓰기, 삭제 등의 작업은 간편하게 수행
+    - Path 클래스 사용
+
+    - Encoding - 작성한 data를 컴퓨터에 보내는 것 (컴퓨터 용어로 파일변환)
+    - utf-8 : 유니코드 표준으로,  encoding= 'utf-8'
+    - * : 에스터리스크
+    - 
+- JSON
+    - js 형식
+    - key-value 쌍을 가지즌 Dictuinary 형태를 가짐
+        - **JSON은 문자열 타입이다**
+    - json.loads() - **문자형** python 형태로 파일 변환
+    - json.load() : **파일 형태** 일 때 사용
+    - json.dumps() : 파이썬 dict을 **json 문자열**로 변환
+    - json.dump() : 파이썬 dict을 **jsodn 파일**로** 변환
+    - s 붙는 것은 복수형의 s가 아니라 str의 s이다
+
+- __name__
+    - 파이썬의 특별한 내장 함수
+    __main__
