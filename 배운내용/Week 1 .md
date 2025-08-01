@@ -1,6 +1,7 @@
 #  오늘 배운것
 ## 250716
 ```
+
 touch  -- 파일 생성'
 ls -- 현재 폴더내의 파일들 목록 출력
 rm (파일이름.확장자명) -- 파일 삭제 // 폴더 삭제시 rm -r (폴더이름)
@@ -11,7 +12,7 @@ code .  -- vscode 파일을 현재 폴더기준으로 다시 열기
 
 # git 사용하는방법 
 git init (저장소 지정)
-git st 
+git status (현재 상태)
 git add 파일이름 or .(현재폴더에 있는 모든 파일 add)
 git commit -m "commit(저장)"
 git log -- log 이력 확인 / git log --oneline > log 간소화 

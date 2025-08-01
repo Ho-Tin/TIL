@@ -527,3 +527,27 @@ print('hello'.capitalize()) - 첫글자만 대문자로 바꿔주는 메서드 �
 
 - 데코레이터 **(시험 안나옴)** 알아두기만 해라
     - 다른 함수의 코드를 유지한 채로 수정하거나 확장하기 위해 사용되는 함수 
+
+## 250801 - 관통 프로젝트
+- git 
+    - 분산 버전 관리 시스템
+    - 코드의 **변경 이력**을 기록하고 **협업** 하기위한 도구
+    - Working Directory
+        - 실제 작업 중인 파일 위치
+    - Staging Area
+        - 다음 버전에 포함시킬 파일 준비 영역
+        - commit 목록에 올려놓는 것들
+    - Repository
+        - git init 
+        - 버전 관리 선언
+    - Commit : 버전
+        - **변경된 파일** 을 저장 / snapshot 이라고도 함
+- git add -A
+    - working Directory에 있는 모든 빨간색 add 해버리기
+
+
+    - 
+- git add -p
+    - add . 과 다르게 내가 올리고 싶은 data를 한번더 확인하고 올릴수 있음
+    
+- pathlib  
