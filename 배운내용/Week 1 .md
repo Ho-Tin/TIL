@@ -21,6 +21,9 @@ TIP : git config --global alias.st status -- git status 치는게 힘드니 단�
 ```
 ---
 ## 250717
+
+- Remote Repository
+    - 원격 저장소
 ```
 git remote add origin(이름) https://(주소) -- github와 연걸
 git push origin(이름) master  -- github에 파일 전송
