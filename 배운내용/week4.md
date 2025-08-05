@@ -97,7 +97,26 @@ print(selection_sort(arr)) # [7, 12, 42, 55, 78]
 ```
 - 삽입 정렬
     - 리스트를 정렬/미정렬로 나누고, 미정렬 된 부분의 원소를 **정렬된**부분의 올바른 위치에 삽입
-    - 정렬되지 않은 부분집합 U에서 하나씩 꺼내서 정렬 되있는 부분집합 S의 **마지막원소**부터 비교하면서 올바른 위치에 삽
+    - 정렬되지 않은 부분집합 U에서 하나씩 꺼내서 정렬 되있는 부분집합 S의 **마지막원소**부터 비교하면서 올바른 위치에 삽입
+    - N^2
+    - 안정성 O
+    - 적응성 O
+    - 제자리 정렬 O
+```
+def insertion_sort(arr):
+    n = len(arr)
+
+    for idx in range(1, n):         # 위치 찾기
+        for jdx in range(idx, 0, -1):       # 비교 하기
+            if arr[jdx - 1] > arr[jdx]:
+                arr[jdx-1], arr[jdx] = arr[jdx], arr[jdx-1]
+            else:
+                break
+    return arr
+
+arr = [55, 7, 78, 12, 42]
+print(insertion_sort(arr)) # [7, 12, 42, 55, 78] 
+```
 - 카운팅 정렬
 - 퀵 정렬
 - 병합 정렬
