@@ -131,29 +131,31 @@ print(insertion_sort(arr)) # [7, 12, 42, 55, 78]
 def counting_sort(arr, max_value): #최대값 찾기 - max_value로 파라미터 제공중 / 조건식 만들던가 max로 쓰던가 알아서 찾을것
     n = len(arr)
     count_arr = [0] * (max_value + 1)
-
+    result = [0] * n
+    
     for num in arr:
         count_arr[num] += 1
 
     # 안정성을 지키기 위해 누적합 배열 작성( 누적합 배열 : 해당 값이 들어갈 수 있는 범위)
-    for i in range(1, len(count_arr)):
+    for i in range(1, len(count_arr)):#(1,5)
         # 이전 값을 누적해서 스스로 갱신
         # 이전 값은 이미 이전 값들을 누적한 상태이므로 가능한 방법
         count_arr[i] += count_arr[i-1]
 
-    result = [0] * n
+    
     # 주어진 배열을 거꾸로 순회하면서, 누적합 배열의 값을 이용해 값을 넣는다
     for i in range(n-1, -1, -1):   # 역으로 순회
         val = arr[i]    #arr[i] 너무 길어서 val로 편하게 쓸라고 적음
-
         result[count_arr[val] - 1] = val
         count_arr[val] -= 1
 
     return result
 
 arr = [0, 4, 1, 3, 1, 2, 4, 1]
-result =counting_sort(arr, 4)
-print((result))
+
+result = counting_sort(arr, 4)
+
+print(result)
 ```
 
 - 퀵 정렬
