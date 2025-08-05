@@ -155,6 +155,7 @@ arr = [0, 4, 1, 3, 1, 2, 4, 1]
 result =counting_sort(arr, 4)
 print((result))
 ```
+
 - 퀵 정렬
 - 병합 정렬
 - 
