@@ -243,6 +243,6 @@ for i in range(N):
       ni = i + dx[k]
       nj = j + dy[k]
       if 0 <= ni <= N and 0 <= nj <= N:
-
-
-0,0   0,5   5,5   5,0   1,0   1,4dn
+```
+## 250807 
+-  알고리즘 강의
