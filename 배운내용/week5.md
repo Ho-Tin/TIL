@@ -39,5 +39,7 @@
 from collections import deque
 queue = dequq()   # 새로운 리스트 생
 List.popleft() # 왼쪽꺼를 뺌
+.rotate(n) # 한칸씩 밀기 
+# n이 음수이면 왼쪽으로
 ```
   - 
