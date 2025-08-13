@@ -35,5 +35,9 @@
   - DeQueue 큐의 앞쪽에서 원소를 삭제+반환 하는 연산
 - 원형큐
   - 리스트의 앞부분에 활용할 수 있는 공간이 있음에도 활용할 수 없음
- 
+```
+from collections import deque
+queue = dequq()   # 새로운 리스트 생
+List.popleft() # 왼쪽꺼를 뺌
+```
   - 
