@@ -37,7 +37,7 @@
   - 리스트의 앞부분에 활용할 수 있는 공간이 있음에도 활용할 수 없음
 ```
 from collections import deque
-queue = dequq()   # 새로운 리스트 생
+queue = dequq()   # 새로운 리스트(이중연결리스트)생성
 List.popleft() # 왼쪽꺼를 뺌
 .rotate(n) # 한칸씩 밀기 
 # n이 음수이면 왼쪽으로
