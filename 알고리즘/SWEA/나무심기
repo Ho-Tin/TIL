@@ -1,0 +1,49 @@
+```
+T = int(input())
+for tc in range(1, T+1):
+    N = int(input())        # 나무 개수
+    tree = list(map(int, input().split()))
+    tree_max = max(tree)
+    cnt = 0
+
+    while sum(tree) != (tree_max * N):
+        cnt += 1
+        tree_min = 121
+
+        if cnt % 2 == 1:        # 홀수인날
+            water = 1
+            for i in range(N):
+                if tree[i] < tree_max:
+                    if tree[i] + water == tree_max:
+                        tree[i] = tree[i] + water
+                        break
+                    else:
+                        if tree[i] < tree_min:
+                            tree_min = tree[i]
+                            stage = i
+            else:
+                if tree[stage] + 2 != tree_max:
+                    tree[stage] = tree[stage] + water
+                else:
+                    continue
+
+        else:
+            water = 2       # 짝수인날
+            for i in range(N):
+                if tree[i] < tree_max:
+                    if tree[i] + water == tree_max:
+                        tree[i] = tree[i] + water
+                        break
+                    else:
+                        if tree[i] < tree_min:
+                            tree_min = tree[i]
+                            stage = i
+            else:
+                if tree[stage] + 2 > tree_max:
+                    continue
+                else:
+                    tree[stage] = tree[stage] + water
+
+
+    print(f'#{tc} {cnt}')
+```
