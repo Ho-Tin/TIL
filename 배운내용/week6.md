@@ -12,4 +12,8 @@
   - 대부분 문제에 적용이 가능하다
   - 경우의 수가 작다면 유리(시간이 오래걸림)
   - 최적화가 별로임
-- 순열  import itertools << 순열 딸깍
+- 순열  
+```
+from itertools import permutations #<< 순열 딸깍
+permutations(변수)
+```
