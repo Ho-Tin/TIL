@@ -12,8 +12,40 @@
   - 대부분 문제에 적용이 가능하다
   - 경우의 수가 작다면 유리(시간이 오래걸림)
   - 최적화가 별로임
-- 순열  
+- 순열
+  - 시간 복잡도 : N!
+  - n,
 ```
 from itertools import permutations #<< 순열 딸깍
 permutations(변수)
+```
+## 250820
+- 조합
+  - nCr
+  - 시간 복잡도 : n! / (n-r)!r!
+```
+# 공식
+def comb(arr, n):
+    result = []
+    if n == 1:
+        return [[i] for i in arr]
+
+    for i in range(len(arr)):
+        elem = arr[i]
+        for rest in comb(arr[i + 1:], n - 1): # 조합
+        # for rest in comb(arr[:i] + arr[i+1:], n - 1): # 순열
+        # for rest in comb(arr, n - 1): # 중복순열
+        # for rest in comb(arr[i:], n - 1): # 중복조합
+            result.append([elem] + rest)
+    return result
+
+print(comb([1,2,3,4], 4))
+```
+```
+import itertools # 반복문 딸깍 import
+from itertools import
+itertools.permutations(변수) #<< 순열 딸깍
+itertools.combinations(변수, 조합숫자) # 조합 딸깍
+itertools.product(변수, repeat=조합숫자) # 중복순열
+itertools.combinations_with_replacement(변수, 조합숫자) # 중복조합
 ```
