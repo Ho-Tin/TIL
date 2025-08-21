@@ -68,3 +68,22 @@ itertools.combinations_with_replacement(변수, 조합숫자) # 중복조합
 - 재귀는 종료조건이 필수이다
 - 1. 재귀 호출을 중단시킬 파라미터 => 현재 포함할지,말지 정할 요소의 인덱스
 - 2. 우리가 원하는 누적값
+```
+def generate_subset(depth, included):
+    if depth == len(input_list):
+        cnt_subset = [input_list[i] for i in range(len(input_list)) if included[i]]
+        subsets.append(cnt_subset)
+        return
+
+    included[depth] = False
+    generate_subset(depth + 1, included)
+
+    included[depth] = True
+    generate_subset(depth + 1, included)
+
+input_list = [1, 2, 3]
+subsets = []
+init_included = [False] * len(input_list)
+generate_subset(0, init_included)
+print(subsets)
+```
