@@ -49,3 +49,9 @@ itertools.combinations(변수, 조합숫자) # 조합 딸깍
 itertools.product(변수, repeat=조합숫자) # 중복순열
 itertools.combinations_with_replacement(변수, 조합숫자) # 중복조합
 ```
+## 250821
+- 부분집합
+- 집합이 포함딘 원소들을 선택하는 것
+- 원소들의 그룹에서 최적의 부분 집합을 찾는데 사용
+- 배낭 짐싸기(knapsack)
+- 시간 복잡도 : 2n
