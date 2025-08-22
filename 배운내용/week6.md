@@ -87,3 +87,7 @@ init_included = [False] * len(input_list)
 generate_subset(0, init_included)
 print(subsets)
 ```
+## 250822
+- 탐욕 알고리즘(Greedy)
+- 
+
