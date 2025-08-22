@@ -1,4 +1,3 @@
-```
 import itertools
 from collections import deque
 import sys
@@ -10,19 +9,32 @@ for tc in range(1, T + 1):
     weight_cho = list(map(int, input().split()))
     cnt = 0
     def generate_subset(depth, included):
-        global left_sum, right_sum, cnt
+        global count, left_sum, right_sum
+        if not included[count] and left_sum < right_sum:
+            return
         if depth == N:
+            global cnt
             left_sum = 0
             right_sum = 0
+            count = 0
+            fa_cnt = included.count(False)
             for i in range(N):
+                count += 1
                 if included[i]:
                     left_sum += cho[i]
                 else:
+                    fa_cnt -= 1
                     right_sum += cho[i]
                     if left_sum < right_sum:
+                        count -= 1
+                        return
+                    if fa_cnt == 0:
+                        cnt += 1
+                        count -= 1
                         return
             else:
                 cnt += 1
+                count -= 1
                 return
 
         included[depth] = False
@@ -34,9 +46,9 @@ for tc in range(1, T + 1):
     for cho in itertools.permutations(weight_cho, N):
         init_included = [False] * N
         init_included[0] = True
+        count = 0
         left_sum = 0
         right_sum = 0
         generate_subset(1, init_included)
 
     print(f'#{tc} {cnt}')
-```
