@@ -1,54 +1,25 @@
 import itertools
 from collections import deque
 import sys
-sys.stdin = open('test.txt', 'r')
+sys.stdin = open('input.txt', 'r')
 
 T = int(input())
 for tc in range(1, T + 1):
     N = int(input())
     weight_cho = list(map(int, input().split()))
     cnt = 0
-    def generate_subset(depth, included):
-        global count, left_sum, right_sum
-        if not included[count] and left_sum < right_sum:
+
+    def generate_subset(index, left_sum, right_sum):
+        global cnt
+        if right_sum > left_sum:
             return
-        if depth == N:
-            global cnt
-            left_sum = 0
-            right_sum = 0
-            count = 0
-            fa_cnt = included.count(False)
-            for i in range(N):
-                count += 1
-                if included[i]:
-                    left_sum += cho[i]
-                else:
-                    fa_cnt -= 1
-                    right_sum += cho[i]
-                    if left_sum < right_sum:
-                        count -= 1
-                        return
-                    if fa_cnt == 0:
-                        cnt += 1
-                        count -= 1
-                        return
-            else:
-                cnt += 1
-                count -= 1
-                return
+        if index == N:
+            cnt += 1
+            return
+        generate_subset(index + 1, left_sum + cho[index], right_sum)    # 왼쪽 추에 추가하기
+        generate_subset(index + 1, left_sum, right_sum + cho[index])    # 오른쪽 추에 추가하기
 
-        included[depth] = False
-        generate_subset(depth + 1, included)
 
-        included[depth] = True
-        generate_subset(depth + 1, included)
-
-    for cho in itertools.permutations(weight_cho, N):
-        init_included = [False] * N
-        init_included[0] = True
-        count = 0
-        left_sum = 0
-        right_sum = 0
-        generate_subset(1, init_included)
-
+    for cho in itertools.permutations(weight_cho):  # 순열 돌려서 집어넣기
+        generate_subset(1, cho[0], 0)   # 무조건 1번추는 왼쪽으로 가야하니깐 인덱스 1부터 시작
     print(f'#{tc} {cnt}')
