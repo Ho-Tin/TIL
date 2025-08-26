@@ -95,115 +95,130 @@ CSS는 웹 페이지의 디자인과 레이아웃을 설정하는 스타일링 �
 
 ---
 # 250826
-## CSS Layout
-## CSS BOX MODEL
-- Outer Dsiplay 속성
-- 박스 타입
-- 박스 타입에 따라 배치 흐름 및 박스가 동작하는 방식이 다름
-1. Block 타입
-  - 책의 각 문단과 같다
-  - 하나의 독립된 덩어리 처럼 동작하는 요소
-  - 다른문단이 옆에 끼어들수 없다
-  - 항상 새로운 행으로 나뉨(너비 100%)
-  - width,height, margin, padding 모두 사용 가능
-  - padding, margin, border로 다른 요소를 상자로부터 밀어냄
-  - width 속성을 지정하지 않으면 박스는 inline 방향으로 사용 가능한 공간을 모두 차지함
-  - '<div>' 헤어 푸터,사이드바 등 다양한 섹션을 구조화하는 데 가장 많이 쓰이는 요소
-2. Inline 타입
-  - 흐름에 따라 자연스럽게 배치되는 요소
-  - 단어를 형광펜으로 칠하는 것과 같다
-  - 줄바꿈이 이루어지지 않음(콘텐츠의 크기 만큼만 영역을 차지)
-  - width와 height 속성을 사용할수 없음
-  - 수직 방향 : padding, margin, border가 적용되지만, 다른 요소를 밀어낼 수는 없음
-  - 수평 방향 : padding, margin, border가 적용되어 다른 요소를 밀어낼 수 있음
-  - '<span>' 자체적으로 시각적 변화 없음, 텍스트의 일부에만 다른 스타일 적용시 사용
-### Normal flow
-- 일반적인 흐름 또는 레이아웃을 변경하지 않은 경우 웹 페이지 요소가 배치되는 방식
-- 박스 타입
-1. Inline-block 타입
-  - inline과 block 특징을 모두 가진 특별한 display thrtjd rkqt
-  - 줄바꿈 없이 크기 지정 가능
-  - width 및 height 사용 가능
-  - paddign, margin 및 border로 인해 다른 요소가 상자에서 밀려남
-2. none 타입
-  - 요소를 화면에 표시하지 않고, 공간조차 부여되지 않음
-### CSS Position
-- CSS Layout
-  - 각 요소의 위치와 크기를 조정하여 웹 디자인을 경절 하는것
-  - 요소들을 상하좌우로 정렬하고, 간격을 맞추고,전체적인 뼈대를 구성
-- CSS Position
-  - 요소를 Normal Flow에서 제거하여 다른위치로 배치하는 것
-  - 다른 요소위에 올리기, 화면의 특정 위치에 고정시키기 등
-  - 겹치는 요소의 쌓이는 순서를 조절할 수 있음
-### Position 유형
-1. static
-  - 요소를 Normal Flow에 따라 배치
-  - 상하좌우 속성이 적용되지 않음
-2. relative : 상대적임
-  - 요소를 Normal Flow에 따라 배치
-  - 원래 위치(static)을 기준으로 이동
-  - 상하좌우 속성으로 위치를 조정
-  - 다른 요소의 레이아웃에 영향을 주지 않음
-    - 요소가 차지하는 공간은 static일떄와 동일
-3. absolute : 절대위치
-  - 요소를 Normal Flow에서 제거
-  - 가장 가까운 relative 부모 요소를 기준으로 이동
-    - 만족하는 부모 요소가 없으면 body 태그를 기준으로 함
-  - 상하좌우 속성으로 위치를 조정
-4. fixed
-  - 요소를 Normal Flow에서 제거
-  - 현재 화면영역(viewport)을 기준으로 이동
-  - 스크롤해도 항상 같은 위치에 유지됨
-5. sticky
-  - relative와 fixed의 특성을 결합한 속성
-  - 스크롤 위치가 임계점에 도달하면 fixed처럼 화면에 고정( 그전에는 relative)
-  - 다음 sticky 요소가 나오면 이전 sticky 요소의 자리를 대체
-6. z-index
-  - 요소의 쌓임 순서를 정의하는 속성
-  - static이 아닌 요소에만 적용됨
-  - 기본값은 auto로 부모 요소의 z-index 값에 영향을 받음
-  - 같은 부모 내에서만 z-index값을 비교하며, 같으면 HTML 문서 순서대로 쌓임
-  - 부모의 z-index가 낮으면 자식의 z-index가 높아도 부모보다 위로 올라갈수 없음
-## CSS Flexbox
-- inner Display 타입
-- 박스 내부의 요소들이 어떻게 배치될지를 결정
-- 행과 열 형태로 배치하는 1차원 레이아웃 방식
-- 책들을 정리하는 것과 같다
-### Flexbox 구성 요소
-- main axis
-  - flex item들이 배치되는 기본 축
-  - 왼 -> 오른쪽 (main start -> main end)
-- corss axis
-  - 위 -> 아래 (cross start -> cross end)
-- flex container
-  - 'display:flex;' 가 설정된 부모 요소
-- flex item
-  - flex Container안에 있는 item
-### Flexbox 속성 목록
-- Flex Container 관련 속성 (부모속성)
-  - 주 축의 시작 선에서 시작
-  - 크기를 채우기 위해 늘어남
-- flex-direction
-  - 나열되는 방향을 지정
-  - row; : 정방향 (왼 -> 오
-  - column; : 상 -> 하
-  - row-reverse; : 오 -> 왼
-  - column-reverse; : 하 -> 상
-- flex-wrap : 줄바꿈
-  - flex container의 행에 들어가지 않을 경우, 다른 행에 배치할지 여부 설정
-- justify-content
-  - 주 축을 따라 flex item 들을 정렬하고 간격을 조정
-- align-content
-  - 컨테니어에 여러 줄의 flex item이 있을때, 공간을 어떻게 분배할지 지정
-  - flex wrap이 wrap 또는 wrap-reverse로 설정된 여러 행에만 적용됨
-  - flex item이 두줄 이상일때만 의미가 있음
-- align-itmes
-  - flex item 들의 교차 축 정렬 방법을 지정
-    - stertch : 아이템이 교차 축 높이를 꽉 채우도록 늘어남
-    - center : 교차 축에 맞춰 중앙 정렬
-    - flex-start : 시작점에 정렬
-    - flex-end : 끝점에 정렬
-- align-self
-  - flex item 들을 교차 축을 따라 **개별적**으로 정렬
-- 
-- Flex item(자식 속성)
+# 📘 CSS Layout 정리
+
+## 1. CSS Box Model
+요소를 하나의 박스로 보고, 내부와 외부 여백을 관리하는 개념
+
+- **content** : 실제 콘텐츠(텍스트, 이미지 등)
+- **padding** : 콘텐츠와 테두리(border) 사이의 여백
+- **border** : 박스를 둘러싼 테두리
+- **margin** : 박스와 다른 요소 사이의 간격
+
+---
+
+## 2. Display 속성과 박스 타입
+
+### (1) Block 타입
+- 문단, 레이아웃 같은 큰 구조에 사용
+- 항상 **새 줄에서 시작**, 가로 폭 전체(100%)를 차지
+- `width`, `height`, `margin`, `padding` 모두 적용 가능
+- 다른 요소 옆에 나란히 배치 ❌
+- 대표 요소: `<div>`, `<h1>~<h6>`, `<p>`, `<header>`, `<footer>`
+
+### (2) Inline 타입
+- 텍스트처럼 **한 줄 안에 자연스럽게 배치**
+- 콘텐츠 크기만큼만 영역 차지
+- `width`, `height` 지정 불가  
+- 수평 여백(`padding`, `margin-left/right`)은 적용 가능하지만, 수직 여백은 레이아웃에 영향을 거의 주지 못함
+- 대표 요소: `<span>`, `<a>`, `<strong>`, `<em>`
+
+### (3) Inline-block 타입
+- **inline + block의 특징**을 동시에 가짐
+- 한 줄(인라인 흐름) 안에 배치되지만 `width`/`height` 지정 가능
+- 버튼이나 내비게이션 메뉴 UI 구성에 자주 사용
+
+### (4) none
+- 해당 요소가 표시되지 않고, **공간도 차지하지 않음**
+
+---
+
+## 3. Normal Flow (기본 배치 흐름)
+- 특별히 `position`, `float` 등으로 조정하지 않은 상태에서의 **기본 배치 규칙**
+- 박스 타입에 따라 block은 세로로 쌓이고, inline은 가로로 이어짐
+
+---
+
+## 4. CSS Position 속성
+요소의 위치를 제어하는 방법  
+
+1. **static** (기본값)  
+   - Normal Flow에 따라 배치  
+   - 좌표 속성(`top`, `left`) 적용 불가
+
+2. **relative** (상대 위치)  
+   - 원래 static 위치를 기준으로 이동  
+   - 공간은 유지 → 다른 요소 레이아웃에 영향 X
+
+3. **absolute** (절대 위치)  
+   - Normal Flow에서 제거됨(공간 차지 X)  
+   - 가장 가까운 `position: relative` 부모를 기준으로 이동  
+   - 없으면 `body` 기준
+
+4. **fixed** (고정 위치)  
+   - 뷰포트(Viewport)를 기준으로 위치  
+   - 스크롤해도 자리 고정
+
+5. **sticky** (상황에 따라 relative/fixed)  
+   - 지정된 스크롤 위치까지는 relative처럼 작동  
+   - 임계점에 도달하면 fixed처럼 화면에 고정  
+   - 뉴스 사이트의 헤더 메뉴 등에 활용됨
+
+6. **z-index**  
+   - 요소가 겹쳤을 때 쌓이는 순서 제어  
+   - 값이 클수록 위에 표시  
+   - 같은 부모 안에서만 비교, 부모보다 위로는 못 올라감
+
+---
+
+## 5. CSS Flexbox
+일차원(1D) 레이아웃 시스템 → 가로나 세로 한 축을 기준으로 정렬 최적화  
+
+### Flexbox 기본 용어
+- **flex container** : `display:flex;` 또는 `display:inline-flex;` 설정된 부모
+- **flex item** : 컨테이너 안의 자식 요소
+- **main axis** : 아이템이 배치되는 기본 축 (row → 가로, column → 세로)
+- **cross axis** : 보조 축 (main axis의 수직 방향)
+
+---
+
+### Flex Container 속성
+- **flex-direction** : 배치 방향
+  - `row`, `row-reverse`, `column`, `column-reverse`
+- **flex-wrap** : 줄바꿈 여부
+  - `nowrap`(기본) / `wrap` / `wrap-reverse`
+- **justify-content** : 메인 축 정렬
+  - `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`
+- **align-items** : 교차 축 정렬
+  - `stretch`, `flex-start`, `flex-end`, `center`, `baseline`
+- **align-content** : 여러 줄이 있을 때 교차 축에서 줄 간격 정렬 (wrap일 때만 적용)
+
+---
+
+### Flex Item 속성
+- **flex-grow** : 남는 공간 분배 비율
+- **flex-shrink** : 공간이 부족할 때 줄어드는 비율
+- **flex-basis** : 아이템의 기본 크기 (width 대신 자주 사용됨)
+- **align-self** : 개별 아이템의 교차 축 정렬
+
+---
+
+## 6. 추가 개념 (보강 포인트)
+
+- **Margin Collapsing (마진 상쇄)**  
+  두 block 요소의 `margin(top/bottom)`이 만나면 겹쳐져서 큰 값만 반영됨
+
+- **Shorthand 속성 (축약형)**  
+  - `margin: 10px;` → 네 방향 모두 10px  
+  - `margin: 10px 20px;` → 상하 10px, 좌우 20px  
+  - `margin: 10px 20px 30px;` → 상 10px, 좌우 20px, 하 30px  
+  - `flex: 1;` → `flex-grow:1, flex-shrink:1, flex-basis:0`
+
+---
+
+# ✅ 요약
+- Display는 **외부 배치 방식(Block/Inline) 제어**
+- Position은 **Normal Flow에서 벗어나 배치 위치 제어**
+- Flexbox는 **내부 요소(자식) 정렬 최적화**
+- Box Model은 여백과 테두리를 계산하는 기본 단위
+
