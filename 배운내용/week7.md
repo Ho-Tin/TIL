@@ -96,9 +96,8 @@ CSS는 웹 페이지의 디자인과 레이아웃을 설정하는 스타일링 �
 ---
 # 250826
 ## CSS Layout
-
-### CSS BOX MODEL
-- Dsiplay 속성
+## CSS BOX MODEL
+- Outer Dsiplay 속성
 - 박스 타입
 - 박스 타입에 따라 배치 흐름 및 박스가 동작하는 방식이 다름
 1. Block 타입
@@ -151,3 +150,60 @@ CSS는 웹 페이지의 디자인과 레이아웃을 설정하는 스타일링 �
   - 가장 가까운 relative 부모 요소를 기준으로 이동
     - 만족하는 부모 요소가 없으면 body 태그를 기준으로 함
   - 상하좌우 속성으로 위치를 조정
+4. fixed
+  - 요소를 Normal Flow에서 제거
+  - 현재 화면영역(viewport)을 기준으로 이동
+  - 스크롤해도 항상 같은 위치에 유지됨
+5. sticky
+  - relative와 fixed의 특성을 결합한 속성
+  - 스크롤 위치가 임계점에 도달하면 fixed처럼 화면에 고정( 그전에는 relative)
+  - 다음 sticky 요소가 나오면 이전 sticky 요소의 자리를 대체
+6. z-index
+  - 요소의 쌓임 순서를 정의하는 속성
+  - static이 아닌 요소에만 적용됨
+  - 기본값은 auto로 부모 요소의 z-index 값에 영향을 받음
+  - 같은 부모 내에서만 z-index값을 비교하며, 같으면 HTML 문서 순서대로 쌓임
+  - 부모의 z-index가 낮으면 자식의 z-index가 높아도 부모보다 위로 올라갈수 없음
+## CSS Flexbox
+- inner Display 타입
+- 박스 내부의 요소들이 어떻게 배치될지를 결정
+- 행과 열 형태로 배치하는 1차원 레이아웃 방식
+- 책들을 정리하는 것과 같다
+### Flexbox 구성 요소
+- main axis
+  - flex item들이 배치되는 기본 축
+  - 왼 -> 오른쪽 (main start -> main end)
+- corss axis
+  - 위 -> 아래 (cross start -> cross end)
+- flex container
+  - 'display:flex;' 가 설정된 부모 요소
+- flex item
+  - flex Container안에 있는 item
+### Flexbox 속성 목록
+- Flex Container 관련 속성 (부모속성)
+  - 주 축의 시작 선에서 시작
+  - 크기를 채우기 위해 늘어남
+- flex-direction
+  - 나열되는 방향을 지정
+  - row; : 정방향 (왼 -> 오
+  - column; : 상 -> 하
+  - row-reverse; : 오 -> 왼
+  - column-reverse; : 하 -> 상
+- flex-wrap : 줄바꿈
+  - flex container의 행에 들어가지 않을 경우, 다른 행에 배치할지 여부 설정
+- justify-content
+  - 주 축을 따라 flex item 들을 정렬하고 간격을 조정
+- align-content
+  - 컨테니어에 여러 줄의 flex item이 있을때, 공간을 어떻게 분배할지 지정
+  - flex wrap이 wrap 또는 wrap-reverse로 설정된 여러 행에만 적용됨
+  - flex item이 두줄 이상일때만 의미가 있음
+- align-itmes
+  - flex item 들의 교차 축 정렬 방법을 지정
+    - stertch : 아이템이 교차 축 높이를 꽉 채우도록 늘어남
+    - center : 교차 축에 맞춰 중앙 정렬
+    - flex-start : 시작점에 정렬
+    - flex-end : 끝점에 정렬
+- align-self
+  - flex item 들을 교차 축을 따라 **개별적**으로 정렬
+- 
+- Flex item(자식 속성)
