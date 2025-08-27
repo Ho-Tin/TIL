@@ -223,42 +223,107 @@ CSS는 웹 페이지의 디자인과 레이아웃을 설정하는 스타일링 �
 - Box Model은 여백과 테두리를 계산하는 기본 단위
 
 # 250827
-## Bootstrap
-### Bootstarp 사용 가이드
-- CSS 프론트엔드 프레임워크 (Toolkit)
-  - 미리 만들어진 다양한 디자인 요소들을 제공하여 쉽게 개발할수 있도록 함
-- CDN(Content Delivery Network)
-  - 서버와 사용자 사이의 물리적인 거리를 줄여 콘텐츠 로딩에 소요되는 시간을 최소화
-  - 지리적으로 사용자와 가까운 CDN 서버에 콘텐츠를 저장해서 사용자에게 전달
-- Bootstrap 기본 사용법
-  - 특정한 규칙이 있는 크래스 이름으로, 스타일 및 레이아웃이 미리 작성되어 있음
-  - property : Margin 또는 padding(m,p)
-  - sides : 방향(t,b,s,e,y,x,blank) s = left, e = right
-  - size.Spacing : 크기(0 ~ 5 : 0, 0.25, 0.5, 1, 1.5, 3rem)
-### Reset CSS
-- 모든 HTML 요소 스타일을 일관된 기준으로 재설정하는 것
-- 일관성있게 스타일을 맞추는 것
-- 모든 브라우저는 'user agent stylesheet'를 가지고 있음
-  - 문제는 **브라우저마다 다름**
-  - 모두 똑같은 스타일 상태로 만들고 개발하는 방법
-- Normalize CSS
-  - 가장 대중적인 방법
-  - 웹 표준 기준으로 브라우저 중 하나가 불일치 한다면 차이가 있는 브라우저를 수정하는 방법
-### Bootstrap 활용 
-- Typography : 제목, 본문, 텍스트, 목록 등
-- color : 일관성 있는 의미론적 관점의 색상 표시
-### Component
-- UI 관련 요소들
-- Alerts, Badges, Cards, Navbar
-- carosual : 움직이는 요소들 (id와 target 확인 필수)
-- modal : 로그인 오류 팝업창 같은것 (data-bs-target과 컴포넌트의 id 값이 일치하는지 확인)
-  - modal과 modal button이 함께 적을 필요 x
-  - modal이 다른 코드들과 중첩될 경우 modal이 어떤 배경 뒤로 숨겨져 버릴 수 있음
-  - modal 코드는 주로 body 태그가 닫히는 위치에 모아두는 것을 권장
-  - modal은 최하단에 적는것이 좋음
-### Semantic Web
-- 요소의 시각적 측면이 아닌 요소의 목적과 역활에 집중하는 방식
-- 웹 데이터를 의미론적으로 구조화된 형태로 표현하는 방식
-- 
+# Bootstrap 정리
 
+## 1. Bootstrap 개요
+- **CSS 프론트엔드 프레임워크 (Toolkit)**
+  - 미리 만들어진 다양한 디자인 요소(스타일, 레이아웃, 컴포넌트)를 제공  
+  - 개발자가 복잡한 CSS를 직접 작성하지 않고도 빠르게 UI 구현 가능  
+
+- **CDN(Content Delivery Network)**
+  - 서버와 사용자 사이의 물리적 거리를 줄여 **로딩 속도를 향상**
+  - 지리적으로 가까운 서버에서 리소스를 제공하여 사용자 경험 개선  
+
+---
+
+## 2. Bootstrap 기본 사용법
+- Bootstrap은 **규칙적인 클래스 이름**을 사용해 스타일과 레이아웃을 제공  
+- 주요 클래스 규칙:
+  - **Spacing (여백)**
+    - `m` : margin  
+    - `p` : padding  
+  - **방향 (sides)**  
+    - `t` : top  
+    - `b` : bottom  
+    - `s` : start(=left)  
+    - `e` : end(=right)  
+    - `x` : 좌우  
+    - `y` : 상하  
+    - (blank) : 전체  
+  - **크기 (0 ~ 5)**  
+    - `0` = 0  
+    - `1` = 0.25rem  
+    - `2` = 0.5rem  
+    - `3` = 1rem  
+    - `4` = 1.5rem  
+    - `5` = 3rem  
+
+📌 예시  
+```html
+<div class="mt-3 p-2">내용</div>
+```
+- `mt-3` : 위쪽 margin 1rem  
+- `p-2` : padding 0.5rem  
+
+---
+
+## 3. Reset CSS
+- **Reset CSS의 목적**
+  - HTML 요소의 스타일을 브라우저마다 동일하게 맞추기 위함  
+  - 모든 브라우저는 `user agent stylesheet`(기본 CSS)를 가지고 있으며, 서로 차이가 있음  
+
+- **방법**
+  - 모든 스타일을 초기화 → 개발자가 원하는 스타일을 직접 정의  
+  - 대표적인 기법: **Normalize CSS**
+    - 브라우저 간 차이가 발생하는 부분만 최소한으로 수정하여 표준에 맞게 정리  
+
+---
+
+## 4. Bootstrap 활용
+- **Typography**
+  - 제목, 본문, 텍스트, 목록 등을 통일된 스타일로 제공  
+
+- **Color**
+  - 의미론적(semantic) 색상 제공 → `primary`, `success`, `danger`, `warning`, `info`, `dark`, `light` 등  
+
+---
+
+## 5. Component (컴포넌트)
+- **UI 관련 요소**들을 미리 제공  
+- 주요 예시:
+  - **Alerts** : 알림 메시지  
+  - **Badges** : 상태 표시용 작은 라벨  
+  - **Cards** : 콘텐츠 박스  
+  - **Navbar** : 네비게이션 바  
+
+- **Carousel**
+  - 이미지나 콘텐츠를 자동/수동으로 넘기는 기능  
+  - `id`와 `data-bs-target` 속성 값이 일치해야 동작  
+
+- **Modal**
+  - 팝업창 형태 (예: 로그인 실패 알림)  
+  - `data-bs-target` 속성과 modal의 `id` 값이 일치해야 실행  
+  - 보통 **body 태그 닫히기 직전**에 작성하는 것을 권장 (다른 요소에 가려지는 문제 방지)  
+
+---
+
+## 6. Semantic Web
+- **정의**
+  - 웹을 "시각적 디자인"이 아니라 **목적과 역할** 중심으로 구조화하는 방식  
+  - 데이터를 의미론적으로 표현 → 검색, 접근성, 유지보수에 유리  
+
+---
+
+## 7. Semantic in HTML
+- HTML 요소 자체가 **의미(semantic)를 가지는 것**  
+- 예시:
+  - `<header>` : 문서나 섹션의 머리글  
+  - `<nav>` : 내비게이션 링크 모음  
+  - `<section>` : 주제별 콘텐츠 구역  
+  - `<article>` : 독립적인 콘텐츠  
+  - `<footer>` : 문서나 섹션의 바닥글  
+
+✅ 시맨틱 태그를 활용하면 **SEO(검색엔진 최적화)**와 **웹 접근성**을 향상시킬 수 있음  
+
+---
 
