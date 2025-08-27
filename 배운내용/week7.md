@@ -245,4 +245,20 @@ CSS는 웹 페이지의 디자인과 레이아웃을 설정하는 스타일링 �
   - 가장 대중적인 방법
   - 웹 표준 기준으로 브라우저 중 하나가 불일치 한다면 차이가 있는 브라우저를 수정하는 방법
 ### Bootstrap 활용 
+- Typography : 제목, 본문, 텍스트, 목록 등
+- color : 일관성 있는 의미론적 관점의 색상 표시
+### Component
+- UI 관련 요소들
+- Alerts, Badges, Cards, Navbar
+- carosual : 움직이는 요소들 (id와 target 확인 필수)
+- modal : 로그인 오류 팝업창 같은것 (data-bs-target과 컴포넌트의 id 값이 일치하는지 확인)
+  - modal과 modal button이 함께 적을 필요 x
+  - modal이 다른 코드들과 중첩될 경우 modal이 어떤 배경 뒤로 숨겨져 버릴 수 있음
+  - modal 코드는 주로 body 태그가 닫히는 위치에 모아두는 것을 권장
+  - modal은 최하단에 적는것이 좋음
+### Semantic Web
+- 요소의 시각적 측면이 아닌 요소의 목적과 역활에 집중하는 방식
+- 웹 데이터를 의미론적으로 구조화된 형태로 표현하는 방식
 - 
+
+
