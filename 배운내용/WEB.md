@@ -326,4 +326,108 @@ CSS는 웹 페이지의 디자인과 레이아웃을 설정하는 스타일링 �
 ✅ 시맨틱 태그를 활용하면 **SEO(검색엔진 최적화)**와 **웹 접근성**을 향상시킬 수 있음  
 
 ---
+# 250828
+***
 
+# Responsive Web & Bootstrap Grid System
+
+## Bootstrap Grid System
+
+### 1. 12-Column System  
+- 부트스트랩의 그리드 시스템은 웹 페이지의 레이아웃을 조정하기 위해 **12개의 컬럼**으로 구성되어 있습니다.  
+- **12개인 이유**  
+  - 12는 약수가 많아(1,2,3,4,6,12) 다양한 조합으로 칸을 나누기에 매우 편리합니다.
+  - 예: 4컬럼(3+3+3+3), 3컬럼(4+4+4), 2컬럼(6+6) 등 유연한 레이아웃이 가능합니다.
+
+### 2. Grid System 구조  
+- **Container**  
+  - 전체 그리드 시스템, 컬럼들을 담는 상위 공간입니다.
+- **Row**  
+  - 한 줄을 형성하며, 컬럼들이 포함됩니다.
+- **Column**  
+  - 실제 컨텐츠가 들어가는 영역입니다.
+- **Gutter**  
+  - 컬럼 사이의 수평(padding) 및 수직(margin) 여백
+  - 다양한 클래스(`gx-0`, `g-5`, `gy-5` 등)로 x, y축 방향의 여백을 조절
+- **Nesting(중첩)**  
+  - `col` 안에 `row`를 추가하여 복잡한 레이아웃 구성도 가능합니다.
+  - 예:  
+    ```html
+    <div class="row">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-6">Nested 1</div>
+          <div class="col-6">Nested 2</div>
+        </div>
+      </div>
+      <div class="col-4">Single column</div>
+    </div>
+    ```
+- **Offset(상쇄)**  
+  - 칸 띄우기, 특정 컬럼을 오른쪽으로 이동  
+  - 예: `offset-4`, `offset-sm-3` 등 사용  
+    ```html
+    <div class="row">
+      <div class="col-4 offset-4">This column is centered</div>
+    </div>
+    ```
+
+## Grid System for Responsive Web
+
+### 반응형 웹 디자인(Responsive Web Design)
+- 디바이스 종류와 해상도 상관없이 어디서나 일관된 레이아웃과 사용자 경험을 제공하는 디자인 기술입니다.
+- 웹 브라우저, 태블릿, 모바일 등 다양한 기기에서 자동으로 레이아웃이 조정됩니다.
+
+### Grid System Breakpoints
+- 다양한 화면 크기에 맞춰 적절한 레이아웃 배치를 위한 **6개의 분기점(breakpoints)**이 존재합니다.
+- **분기점 종류 및 기본 너비(px)**
+  - `xs`: Extra small (`<576px`)
+  - `sm`: Small (`≥576px`)
+  - `md`: Medium (`≥768px`)
+  - `lg`: Large (`≥992px`)
+  - `xl`: Extra large (`≥1200px`)
+  - `xxl`: Extra extra large (`≥1400px`)
+
+- **클래스 예시**
+  - `.col-sm-6`, `.col-md-4`
+  - `.offset-sm-1`, `.offset-md-2`
+
+## UX & UI
+
+### UX (User Experience : 사용자 경험)
+- 사용자의 웹사이트/앱 사용 과정에서 느끼는 만족도를 높이기 위한 설계 철학
+- 여러 요소의 통합적 설계 필요
+  - 유저 리서치 (User Research)
+  - 데이터 설계 및 정제 (Data Design & Refinement)
+  - 유저 시나리오 및 플로우 작성 (User Scenario)
+  - 프로토타입 설계 (Prototype Design)
+
+### UI (User Interface : 사용자 인터페이스)
+- 사용자와 서비스를 연결하는 **시각적/기능적 디자인** 영역
+- 버튼, 네비게이션, 컬러, 폰트, 아이콘 등 실제 사용자가 조작할 수 있는 요소의 디자인
+
+***
+
+## 추가: 예시 코드
+
+```html
+<!-- Responsive Grid 예시 -->
+<div class="container">
+  <div class="row gx-3 gy-4">
+    <div class="col-12 col-md-6 col-lg-4">Column 1</div>
+    <div class="col-12 col-md-6 col-lg-4">Column 2</div>
+    <div class="col-12 col-md-12 col-lg-4">Column 3</div>
+  </div>
+</div>
+```
+- 위 예시에서는 화면 크기에 따라 컬럼의 개수와 배치가 유동적으로 변합니다.
+
+***
+
+## 그리드 시스템 요약
+
+- **유연하고 반응형**인 레이아웃 설계를 가능하게 해줌
+- **다양한 화면**에서도 일관된 UX&UI 경험 제공
+- **코드 재사용성** 및 개발 편의성 향상
+
+***
