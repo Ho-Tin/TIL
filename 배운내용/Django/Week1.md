@@ -136,67 +136,109 @@ templates/       : 템플릿 파일 저장소
 
 # 250901 
 
-# 250901
-## Template system
-### Django Template Language (DTL)
-    - 데이터 표현을 제어하면서, 표현과 관련된 부분을 담당
-    - {{변수}}을 사용하여 변수값을 불러올수있다 context
-    - Template에서 조건, 반복, 변수 등의 프로그래밍적 기능을 제공하는 시스템
-- Variable(변수.변수)
-  - render 함수의 세번째 인자로 딕셔너리 데이터를 사용
-  - dot('.')을 이용하여 변수 속성에 접근가능
-- Filters(변수 | 함수)
-  - 표시할 변수를 수정할 때 사용
-- Tags(% 변수 %)
-  - 반복 또는 논리(for,if문)을 수행할때 사용
-- Comments(# 내용 #)
-  - DTL에서 사용하는 주석
- 
-### 템플릿 상속
-- 페이지의 공통요소를 포함하고, 하위 템플릿이 재정의 할 수있는 공간을 정의하는 기본 'skeleton' 템플릿을 작성하여 상속 구조를 구축한다
-- 'extends'tag
-  - 자식 템플리싱 부모 템플릿으로 부터 확장하는것을 의미
-- 'block' tag
-  - 하위 템플릿에서 재정의 할수 있는 블록을 정의
-### 요청과 응답
-- HTML 'form' tag
-  - 데이터를 보내고 가져오기
-  - HTTP 요청을 서버에 보내는 가장 편리한 방법
-- 'form' element
-  - 사용자로부터 할당된 데이터를 서버로 전송하는것
-- 'action' & 'method'
-- action
-  - 전송될 URL을 지정(목적지)
-  - 만약 이 속성을 지정하지 않으면 현재 페이지의 URL로 보내짐
-- method
-  - 어떤 방식으로 보낼 것인지 정의
-  - (GET, POST)를 지정
-- input element
-  - 사용자의 데이터를 입력 받을 수 있는 요소
-  - 속성 값에 따라
-  - 'name' attribute
-    - input의 핵심 속성
-    - 사용자가 입력한 데이터에 붙이는 이ㄹ,ㅁ
-- Quert String Parameters
-  - 입력 데이터를 URL 주소에 파라미터를 통해 서버로 보내는 방법
-  - key=value&key=value 로 구분됨
-- request 객체
-  - form으로 전송한 데이터 뿐만 아니라 Django로 둘어오는 모든 요청 관련 데이터가 담겨있음
-   request.GET.get("key")
-### Django URLs
-- URL dispatcher
-  - URL 패턴을 정의하고 해당 패턴이 일치하는 view함수를 연결(매핑)
-- Variable Routing
-  - URL 일부에 변수를 포함시키는 것
-  - path('articles/<int:num>/', views.index)
-  - '<path_converter:variable_name>'
-  - Path converters
-    - URL 변수 타입(str ,int 등 5가지)
-- App URL mapping
-  - 각 앱에 URL을 정의하는 것
-- include()
-  - 프로젝트 내부 앱들의 URL을 참조할 수 있도록 매핑하는 함수
-- Naming URL patterns
-  - URL에 이름을 지정하는 것
-  - path 함수의 name 인자를 정의해서 사용
-- 
+***
+
+# Django Template System 정리
+
+## Django Template Language(DTL)
+
+- **데이터 표현 제어**  
+  Django의 템플릿 시스템은 화면에 데이터를 표현하는 역할을 하며, 로직(비즈니스 주체)이 아닌 표현과 관련된 부분을 담당함.
+
+- **컨텍스트 변수**  
+  템플릿에서 `{{ 변수 }}` 문법을 이용하여 컨텍스트 데이터(딕셔너리 등)를 표시 가능함.
+
+- **변수 접근**  
+  점(`.`) 연산자를 통해 객체의 속성, 딕셔너리 키 등에 접근 가능  
+  예: `{{ user.username }}` .
+
+- **Filters**  
+  파이프(`|`) 문법으로 변수 값에 변환·처리 함수 적용  
+  예: `{{ value|lower }}` (소문자 변환) .
+
+- **Tags**  
+  템플릿 상에서 반복(`for`), 조건문(`if`) 등을 제어  
+  예: `{% for item in list %} ... {% endfor %}` .
+
+- **Comments**  
+  템플릿 내에서 Django 주석 작성 가능  
+  문법: `{# 주석 내용 #}` .
+
+## 템플릿 상속 구조
+
+- **Skeleton Template**  
+  전체 페이지 공통 요소(헤더, 푸터 등)를 담는 기본 구조를 작성하고 하위 템플릿에서 필요한 영역을 재정의함.
+
+- **상속 방법**  
+  `{% extends "base.html" %}`  
+  자식 템플릿이 부모 템플릿의 구조를 확장.
+
+- **block 태그**  
+  `{% block content %}{% endblock %}`  
+  자식 템플릿에서 해당 영역을 필요에 따라 재정의함.
+
+## 요청과 응답: HTML 폼과 Django Request
+
+- **HTML form 요소**  
+  유저 데이터를 서버에 전송하는 기본 방법.
+
+    - **action** : 폼 데이터가 전송될 URL 지정. 미지정시 현재 페이지 URL.
+    - **method** : 데이터 전송 방식 지정 (GET/POST).
+    - **input** : 유저 데이터 입력받는 폼 컴포넌트. `name` 속성 필수.
+
+- **쿼리 스트링 파라미터**  
+  GET 방식에서 입력 데이터가 URL 파라미터로 전달됨  
+  형식: `key=value&key2=value2` .
+
+- **request 객체**  
+  사용자의 모든 요청 정보가 포함된 Django 객체  
+  GET 데이터: `request.GET.get("key")`  
+  POST 데이터: `request.POST.get("key")` .
+
+## Django URLs와 라우팅
+
+- **URL Dispatcher**  
+  URL 패턴과 이를 처리할 view 함수를 매핑하는 시스템.
+
+- **Variable Routing**  
+  URL 일부에 변수를 포함해 동적 경로 처리 가능  
+  예: `path('articles/<int:num>/', views.index)`.
+
+    - **Path Converters**:  
+      - str, int, slug, uuid, path 등 데이터 타입 지정.
+
+- **App URL Mapping**  
+  앱별로 `urls.py`에서 URL 패턴을 따로 정의.
+
+- **include() 함수**  
+  프로젝트 내부 여러 앱의 URL 패턴을 모아서 import 및 매핑 가능.
+
+- **URL 이름 지정**  
+  각 패턴에 고유 이름 부여하여, 템플릿/뷰에서 사용할 수 있음  
+  예: `path('home/', views.home, name='home')`.
+
+***
+
+## 추가 참고 예시
+
+```django
+# views.py
+def my_view(request):
+    context = {'msg': 'Hello!'}
+    return render(request, 'template.html', context)
+
+# template.html
+<h1>{{ msg }}</h1>
+```
+
+```django
+# urls.py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('hi/<str:name>/', views.hello, name='hello'),
+]
+```
+
+***
