@@ -109,3 +109,22 @@ Django는 설치 및 설정만으로 강력한 관리자 인터페이스를 제�
 - 실전 Django/ORM 프로그래밍 자료
 
 ***
+# 250903 
+## Django ORM
+### ORM
+- 특정 언어에 얽매이지 않고 언어와 DB를 연결해주는 것
+- **객체 지향 프로그래밍 언어**를 사용하여 호환되지 않는 시스템간의 데이터를 변환하는 기술
+- 언어마다 사용하는 ORM 도구가 다름 (Django는 QuerySet API)
+### QuerySet API
+- Django ORM에서 데이터를 검색, 필터링, 절렬 및 그룹화 하는 데 사용하는 도구
+- Article(모델클래스).objects(약속).all()(QuerySet API)
+- Query
+  - DB에 특정한 데이터를 보여달라는 요청
+  - 파이썬으로 작성한 코드가 ORM을 통해 SQL로 변환되어 DB에 전달, DB에서 응답데이터를 ORM 이 QuerySet 이라는 자료 형태로 변환하여 우리에게 전달됨
+- QuerySet
+  - DB에서 전달 받은 객체 목록(데이터 모음)
+  - Django ORM을 통해 만들어진 자료형
+  - 파이썬의 모델 클래스와 인스턴스를 활용해 DB에 데이터를 저장, 조호, 수정, 삭제하는 것
+- CRUD
+  - 소프트웨어가 가지는 기본적인 데이터 처리 기능
+  - Crate, Read, Update, Delete
