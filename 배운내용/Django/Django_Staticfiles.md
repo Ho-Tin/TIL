@@ -29,3 +29,60 @@ STATICFILES_DIRS = [
     ]
 ```
 ## Media files
+- **사용자**가 웹에서 업로드하는 정적 파일(user-uploaded)
+### 이미지 업로드
+- imageField()
+  - 이미지 업로드에 사용하는 모델 필드
+  - 이미지 객체가 직접 DB에 저장되는 것이 아닌 **이미지 파일의 경로** 문자열이 저장됨
+- MEDIA_ROOT
+  - 미디어 파일들이 위치하는 디렉토리의 절대 경로
+- MEDIA_URL
+  - STATIC_URL과 동일하게 겉으로 보여지는 경로
+1. setting.py에 MEDIA_ROOT, MEDIA_URL 설정
+```
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'bonobono/'
+```
+2. 작성한 MEDIA_ROOT와 MEDIA_URL에 대한 URL 지정
+```
+from django.contrib import admin
+from django.urls import path, include
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('articles/', include('articles.urls')),
+] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+- 이미지 업로드
+1. models.py에 `image = models.ImageField(blank=True)` 작성
+2. ImageField 사용하기 위해서는 Pillow 라이브러리가 필요함
+  - `pip install pillow`
+3. form 요소의 enctype 속성 추가
+  - enctype : form 데이터를 서버로 전송할때 인코딩 방식 결정하는것
+  - `enctype="multipart/form-data"`
+  - `<form action="{% url "articles:create" %}" method="POST" enctype="multipart/form-data">`
+4. ModelForm의 2번째 인자로 요청받은 파일 데이터 작성
+```
+def create(request):
+    if request.method == "POST":
+        form = ArticleForm(request.POST, request.FILES)
+```
+### 이미지 업로드 제공
+- url 속성을 통해 업로드 파일의 경로 값을 얻을 수 있음
+- article(인스턴스 변수명).image(modle 컬럼명).url
+  - 업로드 파일의 경로
+- article.image
+  - 업로드 파일의 파일 이미지명
+```
+{% if article.image %} # 이미지가 있을때만 이미지 변경
+<p>이미지 : <img src="{{article.image.url}}" alt="img"></p>
+{% endif %}
+```
+### 참고
+- upload_to
+  - ImageField()의 upload_to 속성을 사용해 다양한 추가 경로 설정 가능
+<img width="797" height="441" alt="image" src="https://github.com/user-attachments/assets/13cd9590-a955-42a2-a619-f28636006f8a" />
+
