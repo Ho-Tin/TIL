@@ -284,3 +284,52 @@ def signup(request):
             auth_login(request, user)  # 자동 로그인 추가
             return redirect('articles:index')
 ```
+
+### 회원정보 수정
+- User 객체를 Update 하는 과정
+- `UserChangeForm()`
+  - 회원정보 수정 시 사용자 입력 데이터를 받는 built-in ModelForm
+```
+# forms.py
+class CustomUserChangeForm(UserChangeForm):
+    class Meta(UserChangeForm.Meta):
+        model = get_user_model()
+        fields = ('first_name', 'last_name', 'email',)
+```
+
+```
+# views.py
+def update(request):
+    
+    if request.method == "POST":
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:index')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    context = {
+        'form':form
+        }
+    return render(request, 'accounts/update.html', context)
+```
+### 비밀번호 변경
+```
+# views.py
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash # 세션 유지를 위한 함수
+
+def change_password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, request.user) # 세션 유지를 위한 함수
+            return redirect('articles:index')
+    else:
+        form = PasswordChangeForm(request.user)
+    context = {
+        'form':form
+        }
+    return render(request, 'accounts/change_password.html', context)
+```
