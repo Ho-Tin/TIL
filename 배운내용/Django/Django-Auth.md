@@ -315,9 +315,13 @@ def update(request):
 ```
 ### 비밀번호 변경
 - 암호 변경시 세션 무효화
-  - 비밀번호가 변경되면 기존 세션과의 회원 인증 정보가 일치하지 않게됨으로 로그아웃 ㅇ처리됨
-    - `update_session_auth_hash(request, user)`를 사용하여 sessin 자동 갱
-    - 
+  - 비밀번호가 변경되면 기존 세션과의 회원 인증 정보가 일치하지 않게됨으로 로그아웃 처리됨
+    - `update_session_auth_hash(request, user)`를 사용하여 sessin 자동 갱신
+```
+#urls.py
+
+path(<int:pk>/password, views.change_password, name="change_password")
+``` 
 ```
 # views.py
 from django.contrib.auth.forms import PasswordChangeForm
