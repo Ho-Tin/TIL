@@ -1,4 +1,4 @@
-***
+ ***
 
 # Authentication System
 
@@ -128,21 +128,159 @@ def login(request):
 ```
 
 ***
-## Logout
+# Django 회원 관리 정리
 
-- 로그아웃은 세션을 delete하는 과정
-- logout(request) 함수 사용
-```
-#accounts/modles.py
+## 로그아웃
+- 로그아웃은 **세션을 삭제하는 과정**이다.
+- `logout(request)` 함수 사용 예시:
+
+```python
+# accounts/views.py
 from django.contrib.auth import logout as auth_logout
+from django.shortcuts import redirect
 
 def logout(request):
     auth_logout(request)
     return redirect('articles:index')
 ```
-### AbstractUser class
-- 관리자 권한과 함께 완전한 기능을 가지고 있는 User model을 구현하는 추상 클래스
-- Abstract base classes(추상 기본 클래스)
-  - 몇 가지 공통 정보를 여러 다른 모델에 넣을 때 사용하는 클래스
-  - 데이터베이스 테이블을 만드는 데 사용되지 않음
-  - 
+
+***
+
+## AbstractUser class
+- 관리자 권한과 함께 완전한 기능을 가지고 있는 **User 모델을 구현하는 추상 클래스**.
+- **Abstract base classes(추상 기본 클래스)**  
+  - 여러 다른 모델에 공통 정보를 넣을 때 사용하는 클래스.  
+  - 데이터베이스 테이블은 생성되지 않는다.  
+
+***
+
+## 회원가입
+- 회원가입은 **세션 생성 과정**이다.
+- Django에서 기본 제공하는 `UserCreationForm`을 사용한다.
+
+```python
+# accounts/views.py
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import redirect, render
+
+def signup(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:index')
+    else:
+        form = UserCreationForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'accounts/signup.html', context)
+```
+
+### 커스텀 User 모델 적용
+- 기본 `UserCreationForm` 대신 **커스텀 User 모델**을 연결해야 한다.
+
+```python
+# accounts/forms.py
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = get_user_model()
+```
+
+- `get_user_model()`  
+  - 현재 프로젝트에서 활성화된 사용자 모델을 반환.
+  - Django는 직접 `User` 클래스를 참조하지 않고, `get_user_model()`을 사용할 것을 권장한다.
+
+```python
+# accounts/views.py
+from .forms import CustomUserCreationForm
+from django.shortcuts import redirect, render
+
+def signup(request):
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:index')
+    else:
+        form = CustomUserCreationForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'accounts/signup.html', context)
+```
+
+***
+
+## 회원 탈퇴
+- 회원탈퇴는 **User 객체 삭제 과정**이다.
+
+```python
+def delete(request):
+    request.user.delete()
+    return redirect("articles:index")
+```
+
+- 회원 탈퇴 시 세션 데이터까지 삭제하려면 **탈퇴 후 로그아웃** 순서로 진행한다.  
+  (순서를 바꿀 경우 객체 정보가 없어져 오류 발생)
+
+```python
+from django.contrib.auth import logout as auth_logout
+
+def delete(request):
+    request.user.delete()
+    auth_logout(request)
+    return redirect("articles:index")
+```
+
+***
+
+## 인증된 사용자 접근 제한
+
+### is_authenticated 속성
+- 사용자 로그인 여부를 확인할 수 있는 User 모델의 속성 (`True` 또는 `False`).
+- 템플릿에서 `{% if request.user.is_authenticated %}` 사용 가능.
+- 이미 로그인된 사용자가 로그인/회원가입 페이지에 접근하지 못하도록 제한한다.
+
+```python
+def login(request):
+    if request.user.is_authenticated:
+        return redirect('articles:index')
+
+def signup(request):
+    if request.user.is_authenticated:
+        return redirect('articles:index')
+```
+
+### login_required 데코레이터
+- 인증된 사용자만 특정 view 함수를 실행할 수 있도록 함.
+- 예: 인증된 사용자만 게시글 작성 가능하게 하기
+
+```python
+# articles/views.py
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def create(request):
+    pass
+```
+
+***
+
+## 회원가입 후 자동 로그인
+- 회원가입 시 즉시 로그인하려면 `auth_login` 함수 사용.
+
+```python
+from django.contrib.auth import login as auth_login
+
+def signup(request):
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)  # 자동 로그인 추가
+            return redirect('articles:index')
+```
