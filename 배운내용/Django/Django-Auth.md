@@ -121,9 +121,28 @@ def login(request):
 ### 로그인 유저 정보 출력
 - Django에서는 기본적으로 `user` 객체 제공  
 - 템플릿에서 로그인한 유저 이름 출력 가능  
-
+- get_user()
+  - 유효성 검사를 통과했을 경우 로그인 한 사용자 객체를 반환
 ```django
 {{ user.username }}
 ```
 
 ***
+## Logout
+
+- 로그아웃은 세션을 delete하는 과정
+- logout(request) 함수 사용
+```
+#accounts/modles.py
+from django.contrib.auth import logout as auth_logout
+
+def logout(request):
+    auth_logout(request)
+    return redirect('articles:index')
+```
+### AbstractUser class
+- 관리자 권한과 함께 완전한 기능을 가지고 있는 User model을 구현하는 추상 클래스
+- Abstract base classes(추상 기본 클래스)
+  - 몇 가지 공통 정보를 여러 다른 모델에 넣을 때 사용하는 클래스
+  - 데이터베이스 테이블을 만드는 데 사용되지 않음
+  - 
