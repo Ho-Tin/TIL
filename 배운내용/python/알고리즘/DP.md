@@ -1,7 +1,7 @@
 # 동적 계획법 (Dynamic Programming, DP)
 
-동적 계획법은 **중복되는 부분 문제(Overlapping Subproblems)**를 해결하고, **최적 부분 구조(Optimal Substructure)**를 이용하여 문제를 효율적으로 해결하는 알고리즘 기법이다.  
-큰 문제를 작은 문제로 나누어 해결하고, 그 결과를 재사용함으로써 중복 계산을 줄일 수 있다.
+- 동적 계획법은 **중복되는 부분 문제(Overlapping Subproblems)**를 해결하고, **최적 부분 구조(Optimal Substructure)**를 이용하여 문제를 효율적으로 해결하는 알고리즘 기법이다.  
+- 큰 문제를 작은 문제로 나누어 해결하고, 그 결과를 재사용함으로써 중복 계산을 줄일 수 있다.
 
 ---
 
