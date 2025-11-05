@@ -1,4 +1,6 @@
 
+
+````md
 # Django: 사용자 인증 기반 게시글/댓글 기능 구현
 
 이 문서는 Django 프로젝트에서 사용자 모델(User model)과 게시글(Article), 댓글(Comment) 모델을 연동하여 인증 기반의 CRUD 기능을 구현하는 방법을 요약합니다.
