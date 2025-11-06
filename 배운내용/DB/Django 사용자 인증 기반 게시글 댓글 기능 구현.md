@@ -16,8 +16,11 @@
 * `articles/models.py`
     * `User` 모델은 직접 참조하지 않고 `settings.AUTH_USER_MODEL`을 사용하는 것을 권장합니다.
     * `on_delete=models.CASCADE`: 사용자가 삭제되면 해당 사용자가 작성한 모든 게시글도 함께 삭제됩니다.
-
+* User모델을 참조하느 2가지 방법
+    * 'setting.AUTH_USER_MODEL' : models.py에서 User모델 참조할 때 사용
+    * 'get_user_model()' : models.py를 제외한 다른 모든 위치에서 사용
 ```python
+
 # articles/models.py
 from django.conf import settings
 
@@ -169,9 +172,7 @@ def comments_create(request, pk):
     # articles/views.py
     @require_POST
     def comments_delete(request, article_pk, comment_pk):
-        if not request.user.is_authenticated:
-            return redirect('accounts:login')
-        
+      
         comment = Comment.objects.get(pk=comment_pk)
         if request.user == comment.user: # 본인 확인
             comment.delete()
