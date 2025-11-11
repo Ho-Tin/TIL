@@ -76,7 +76,7 @@ User 모델이 자신(User)을 팔로우하는 M:N 관계를 설정합니다.
         ```python
         # accounts/models.py
         class User(AbstractUser):
-            following = models.ManyToManyField('self', symetrical=False, related_name='followers')
+            following = models.ManyToManyField('self', symmetrical=False, related_name='followers')
         ```
 
 ### \#\#\# 3. 팔로우 기능 View 및 템플릿
