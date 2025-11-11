@@ -72,10 +72,11 @@ User 모델이 자신(User)을 팔로우하는 M:N 관계를 설정합니다.
       * `related_name='followers'`를 설정하여 `user.followers`로 접근할 수 있게 합니다.
       * (참고) `user.followings`는 기본적으로 `User` 모델이 참조하는 필드명이 됩니다.
   * **중간 테이블**: 이 관계를 설정하면 Django는 `accounts_user_followings`와 같은 중간 테이블을 자동으로 생성합니다. (컬럼: `id`, `from_user_id`, `to_user_id`)
+  * 
         ```python
         # accounts/models.py
         class User(AbstractUser):
-            following = models.ManyToManyField('self', symetrical=False, related_name='followers')
+            following = models.ManyToManyField('self', symmetrical=False, related_name='followers')
         ```
 
 ### \#\#\# 3. 팔로우 기능 View 및 템플릿
