@@ -1,7 +1,7 @@
 
 -----
 
-# SSAFY - Database: Many To Many Relationships 02 (Python)
+# Django Many-to-Many Relationships 심화 - 팔로우, Fixtures, 쿼리 최적화
 
 이 자료는 Django의 M:N 관계를 활용한 팔로우 기능 구현, 데이터 관리를 위한 Fixtures, 그리고 성능 최적화를 위한 쿼리 개선 방법을 상세히 다룹니다.
 

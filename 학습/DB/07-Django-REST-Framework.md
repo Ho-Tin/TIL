@@ -2,7 +2,7 @@
 
 -----
 
-# REST API
+# Django REST Framework (DRF) - JSON API 설계 및 구현
 
 ## 💻 목차
 

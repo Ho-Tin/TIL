@@ -2,7 +2,7 @@
 
 -----
 
-# SSAFY - Database: Many To One Relationships 01 (Python)
+# Django Many-to-One Relationships - ForeignKey와 댓글 CRUD 구현
 
 ## 📑 목차 (Table of Contents)
 

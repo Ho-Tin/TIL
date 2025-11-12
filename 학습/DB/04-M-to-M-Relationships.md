@@ -4,7 +4,7 @@
 `Django_M2M_Summary.md`
 
 ````md
-# Django: Many-to-Many(M:N) 관계 이해 및 구현
+# Django Many-to-Many Relationships - 중개 모델과 좋아요 기능
 
 이 문서는 Django(장고)의 Many-to-Many(M:N) 관계 설정, 중개 모델, `ManyToManyField` 사용법 및 '좋아요' 기능 구현 예제를 요약합니다. (SSAFY 10기 강의 자료 기반)
 
