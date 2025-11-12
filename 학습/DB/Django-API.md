@@ -139,6 +139,22 @@
 
   * 여러 시스템에서 활용하기 위해 데이터 구조나 객체 상태(예: Python 객체)를 **재구성할 수 있는 포맷(예: JSON)으로 변환하는 과정**입니다.
   * 이 변환 과정은 **Serializer Class**가 담당하며, `serializers.py` 파일에 작성합니다.
+```python
+from rest_framework import serializers
+from .models import Article
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = '__all__'
+        
+        
+class ArticleListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = ('id', 'title', 'content',)
+```
 
 -----
 
@@ -246,6 +262,9 @@ def article_detail(request, article_pk):
     
     elif request.method == 'DELETE':
         article.delete()
+        data = {
+          'message' : f'{article.pk}삭제 됨'
+        }
         return Response(status=status.HTTP_204_NO_CONTENT)
     
     elif request.method == 'PATCH':
