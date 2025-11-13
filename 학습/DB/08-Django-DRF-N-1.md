@@ -58,7 +58,16 @@ Migrations for 'articles':
 게시글에 속한 댓글을 생성(`POST .../articles/1/comments/`)할 때, 요청 본문(body)이 아닌 URL에서 게시글 ID(`article`)를 받아옵니다.
 
 이때 `CommentSerializer`에서 `article` 필드를 \*\*`read_only_fields`\*\*로 지정하여 유효성 검사에서 제외시킵니다.
-
+```python
+# articles/views.py
+@api_view(['POST'])
+def comment_create(request, article_pk):
+    article = Article.objects.get(pk=article_pk)
+    serializer = CommentSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=False):
+        serializer.save(article=article)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+```
 ```python
 # articles/serializers.py
 
@@ -72,7 +81,23 @@ class CommentSerializer(serializers.ModelSerializer):
 ### 4\. DELETE & PUT 메서드 (삭제 및 수정)
 
 단일 댓글(`.../api/v1/comments/{{comment_pk}}/`)에 대한 삭제 및 수정 요청은 성공 시 `204 No Content` 상태 코드를 응답합니다.
+```python
+# articles/views.py
 
+@api_view(['GET', 'PUT', 'DELETE'])
+def comment_detail(request, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    
+    elif request.method == 'PUT':
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+    
+    elif request.method == 'DELETE':
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+```
 ### 5\. 역참조 데이터 구성 (N -\> 1)
 
 댓글을 조회할 때, 댓글이 속한 게시글의 단순 ID가 아닌 **게시글 제목**(`title`)까지 함께 보여주는 방법입니다.
@@ -100,18 +125,34 @@ class CommentSerializer(serializers.ModelSerializer):
     ```
 
 ### 6\. 정참조 데이터 구성 (1 -\> N)
+단일 게시글을 조회할 떄, 해당 게시글에 달린 **댓글**을 포함시키는 방법
+* `comment_set`을 추가
+```python
+# articles/serializers.py
+class ArticleSerializer(serializers.ModelSerializer):
+    class CommentDetailSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Comment
+            fields = ('id', 'content',)
 
+    comment_set = CommentDetailSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Article
+        fields = '__all__'
+```
 단일 게시글을 조회할 때, 해당 게시글에 달린 **댓글의 개수**를 포함시키는 방법입니다.
 
   * **방법 1: `annotate` (View에서 처리)**
-    View에서 `get_object_or_404`로 객체를 조회할 때 `annotate`와 `Count`를 사용하여 댓글 개수를 계산한 `num_of_comments` 필드를 추가합니다.
+    View에서 `Article` 객체를 조회할 때 `annotate`와 `Count`를 사용하여 댓글 개수를 계산한 `num_of_comments` 필드를 추가합니다.
 
     ```python
     # articles/views.py
+    from django.db.models import Count
 
     @api_view(['GET', 'DELETE', 'PUT'])
     def article_detail(request, article_pk):
-        article = get_object_or_404(Article.objects.annotate(num_of_comments=Count('comment')), pk=article_pk)
+        article = Article.objects.annotate(num_of_comments=Count('comment')).get(pk=article_pk)
         # ...
     ```
 
