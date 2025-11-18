@@ -141,7 +141,7 @@ JavaScript는 특정 컨텍스트에서 값을 자동으로 변환합니다. (�
   * 조건 표현식의 결과값을 `boolean` 타입으로 변환 후 참/거짓을 판단합니다.
 
 <!-- end list -->
-
+<!--  -->
 ```javascript
 // const name = 'admin'
 
