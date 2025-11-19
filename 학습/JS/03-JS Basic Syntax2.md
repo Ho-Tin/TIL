@@ -1,4 +1,3 @@
-강의 영상의 핵심 이론 설명과 해당 예시 코드를 하나로 통합하여 정리해 드립니다. 학습 시 이론을 읽고 바로 코드를 확인하여 이해를 도울 수 있도록 구성했습니다.
 
 -----
 
@@ -228,6 +227,47 @@ const doubleNum = numbers.map((number) => {
 console.log(doubleNum) // [2, 4, 6] (새로운 배열)
 console.log(numbers)   // [1, 2, 3] (원본 유지)
 ```
+
+요청하신 대로 **3.2 Array Helper Methods** 항목에 `reduce` 설명을 추가하여 정리해 드립니다. 기존 양식인 \*\*[핵심 설명]\*\*과 **[예시 코드]** 형식을 유지했습니다.
+
+이 내용을 기존 노트의 **B. `map`** 바로 아래에 추가하시면 됩니다.
+
+-----
+
+#### C. `reduce`
+
+배열의 각 요소를 순회하며 콜백 함수를 실행하고, **최종적으로 하나의 결과값**을 반환합니다. 주로 합계, 평균 등 누적 계산이 필요할 때 사용합니다.
+
+  * **콜백 함수 인자:** `(accumulator, currentValue)`
+      * `accumulator` (acc): 이전 순회에서 반환된 누적값
+      * `currentValue` (cur): 현재 처리 중인 배열의 요소
+  * **초기값:** `reduce` 함수의 두 번째 인자로 전달 (생략 시 첫 번째 요소가 초기값이 됨)
+
+**[예시 코드]**
+
+```javascript
+const scores = [90, 80, 70, 100]
+
+// total: 누적값, score: 현재 요소, 0: 초기값
+const sum = scores.reduce((total, score) => {
+  // 리턴된 값이 다음 순회의 total로 전달됨
+  return total + score
+}, 0)
+
+console.log(sum) // 340
+
+// (활용) 평균 구하기
+const average = sum / scores.length
+console.log(average) // 85
+```
+
+-----
+
+### 📝 요약: `map` vs `reduce` 차이점
+
+  * **`map`**: 배열의 길이만큼 새로운 값을 생성하여 **새로운 배열**을 만듦 (1:1 변환).
+  * **`reduce`**: 배열의 요소들을 합쳐서 **단 하나의 값**(숫자, 문자열, 객체 등)을 만듦 (N:1 요약).
+
 
 ### 3.3 전개 구문 (Spread Syntax)
 
