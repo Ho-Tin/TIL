@@ -1,7 +1,8 @@
+제공해주신 내용의 8번 항목 뒤에 **Lodash(로 대시)** 관련 내용을 추가하여 전체 문서를 완성해 드립니다.
 
 -----
 
-# JavaScript Controlling Event (완전 정복)
+# JavaScript Controlling Event (완전 정복 + Lodash)
 
 ## 1\. 이벤트(Event)의 개념
 
@@ -221,14 +222,33 @@ formTag.addEventListener('submit', addTodo);
 
 -----
 
-## 9\. 요약 (핵심 키워드)
+## 9\. Lodash (로 대시)
 
-| 용어 | 설명 | 예시 |
-| :--- | :--- | :--- |
-| **이벤트 (Event)** | 웹 페이지에서 일어나는 신호 | click, input, submit |
-| **이벤트 핸들러** | 이벤트 발생 시 실행되는 함수 | `function() { ... }` |
-| **addEventListener** | 요소에 핸들러를 등록하는 메서드 | `btn.addEventListener(...)` |
-| **이벤트 버블링** | 하위 요소에서 상위 요소로 이벤트 전파 | 자식 클릭 시 부모도 반응 |
-| **event.target** | 이벤트를 실제 시작한 요소 | 누른 버튼 그 자체 |
-| **event.currentTarget** | 핸들러가 연결된 요소 | `this`와 유사 |
-| **preventDefault** | 브라우저의 기본 동작 취소 | 폼 제출 시 새로고침 막기 |
+영상 슬라이드 45페이지에 소개된 **JavaScript 유틸리티 라이브러리**입니다.
+
+### 9-1. 개념 및 필요성
+
+  * **정의:** 배열, 객체, 숫자, 문자열 등을 다룰 때 자주 쓰이는 필수 기능을 모아놓은 라이브러리입니다.
+  * **특징:**
+      * 순수 자바스크립트(Vanilla JS)로 짜면 길고 복잡해지는 코드를 **매우 간결하게** 만들어줍니다.
+      * 데이터의 유효성 검사나 구조 변환이 쉽습니다.
+  * **관례:** 라이브러리 이름처럼 보통 **`_` (underscore)** 라는 변수명으로 불러와 사용합니다.
+
+### 9-2. 주요 함수 예시
+
+라이브러리를 HTML에 로드(`<script src="...">`)한 후 사용 가능합니다.
+
+```javascript
+// 1. _.sample(array): 배열에서 요소 하나를 무작위로 추출
+const fruits = ['Apple', 'Banana', 'Cherry'];
+console.log(_.sample(fruits)); // 예: 'Banana'
+
+// 2. _.sampleSize(array, n): 배열에서 n개의 요소를 무작위 추출
+// 활용: 로또 번호 생성기 등
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(_.sampleSize(numbers, 3)); // 예: [2, 9, 5]
+
+// 3. _.range(start, end): 특정 범위의 숫자 배열 생성
+const nums = _.range(1, 5); 
+console.log(nums); // [1, 2, 3, 4] (종료값 5는 포함 안 됨)
+```
