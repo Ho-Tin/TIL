@@ -55,7 +55,7 @@ textInput.addEventListener('input', function (e) {
     return; 
   }
 
-  // 정상 입력 시 카운터 업데이트
+  // 정상 입력 시 카운터 업데이트    
   counter.textContent = `${currentLength} / ${maxLength}`;
 });
 ```
