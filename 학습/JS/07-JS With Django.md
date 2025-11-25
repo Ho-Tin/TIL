@@ -54,7 +54,7 @@
 
 ### 3.2. Django View (accounts/views.py)
 
-  * HTML 문서가 아닌 **JSON 데이터**를 응답해야 하므로 `JsonResponse` 사용.
+  * HTML 문서가 아닌 **JSON 데이터**를 응답해야 ``하므로 `JsonResponse` 사용.
   * 팔로우 상태(`is_followed`)와 갱신된 팔로워/팔로잉 수를 `context`에 담아 반환.
 
 <!-- end list -->
