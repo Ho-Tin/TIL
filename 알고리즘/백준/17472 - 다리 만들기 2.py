@@ -104,6 +104,6 @@ for x, y, z, in heap:
         union(x, y)
 
 if count > 0 and edges == count - 1:
-    print(result)
+    print(result) 
 else:
     print(-1)
