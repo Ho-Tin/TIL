@@ -68,6 +68,14 @@ schema = StructType([
 
 ---
 
+```python
+from pyspark.sql.functions import col, lit, when, coalesce, count, desc, asc
+# SQL 사용을 위한 뷰 등록 가정
+df.TempView("my_table")
+df.createGlobalTempView("my_table")
+df.createOrReplaceTempView("my_table")
+```
+
 ### 1. DataFrame 생성 (Creation)
 
 영상에서는 스키마를 정의하고 데이터를 생성하는 과정이 소개되었습니다.
